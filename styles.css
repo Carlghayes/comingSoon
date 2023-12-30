@@ -21,7 +21,6 @@ body {
     top: 0;
     left: 0;
 }
-
 .coming-soon {
     position: absolute;
     top: 20px; /* Adjust the top position as needed */
@@ -32,4 +31,6 @@ body {
 .coming-soon h1 {
     font-size: 2em;
     margin-bottom: 5px;
+    font-family: Tahoma, sans-serif;
+    
 }

@@ -1,14 +1,17 @@
 const canvas = document.getElementById('pongCanvas');
 const ctx = canvas.getContext('2d');
+canvas.width = 800;
+canvas.height = 600;
+
 
 // Pong paddle
 const paddleWidth = 10;
-const paddleHeight = 75;
+const paddleHeight = 90;
 let leftPaddleY = canvas.height / 2 - paddleHeight / 2;
-const paddleSpeed = 5; // Adjust the speed as needed
+const paddleSpeed = 6; // Adjust the speed as needed
 
 // Pong ball
-const ballSize = 10;
+const ballSize = 12;
 let ballX = canvas.width / 2;
 let ballY = canvas.height / 2;
 let ballSpeedX = 2;
@@ -58,6 +61,8 @@ function drawBall() {
     ctx.closePath();
 }
 
+let collisionCount = 0;
+
 function update() {
     ballX += ballSpeedX;
     ballY += ballSpeedY;
@@ -67,13 +72,19 @@ function update() {
     }
 
     if (ballX - ballSize < paddleWidth && ballY > leftPaddleY && ballY < leftPaddleY + paddleHeight) {
-        ballSpeedX = -ballSpeedX;
+        // Increase ball speed when it hits the paddle
+        ballSpeedX = -1.1 * ballSpeedX;
+        ballSpeedY = 1.1 * (Math.random() > 0.5 ? 1 : -1);
     }
 
     if (ballX - ballSize < 0) {
         // Reset ball position when it goes past the left edge
         ballX = canvas.width / 2;
         ballY = canvas.height / 2;
+
+        // Reset ball speed
+        ballSpeedX = 2;
+        ballSpeedY = 2;
     }
 
     if (ballX + ballSize > canvas.width) {
@@ -81,6 +92,7 @@ function update() {
         ballSpeedX = -ballSpeedX;
     }
 }
+
 
 
 function draw() {
