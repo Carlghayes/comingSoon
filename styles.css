@@ -4,17 +4,32 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background: url('CarlAltDeleteArtboard5.png') center/cover no-repeat; /* Replace 'your-background-image.jpg' with the path to your image */
-    color: #61dafb;
+    background: url('CarlAltDeleteArtboard5.png') center/cover no-repeat;
+    color: #f8eedf;
     font-family: 'Arial', sans-serif;
+    position: relative;
 }
 
 .container {
     text-align: center;
+    top: 0;
+    left: 0;
 }
 
 #pongCanvas {
     position: fixed;
     top: 0;
     left: 0;
+}
+
+.coming-soon {
+    position: absolute;
+    top: 20px; /* Adjust the top position as needed */
+    right: 20px; /* Adjust the right position as needed */
+    text-align: right;
+}
+
+.coming-soon h1 {
+    font-size: 2em;
+    margin-bottom: 5px;
 }
